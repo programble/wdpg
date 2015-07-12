@@ -4,5 +4,6 @@ CREATE TABLE words (
   word text NOT NULL,
   syntactic_marker syntactic_marker,
   lex_id integer NOT NULL,
+  word_number integer NOT NULL,
   UNIQUE (word, syntactic_marker, lex_id)
 );
