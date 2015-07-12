@@ -26,7 +26,15 @@ dict: $(DICT_TAR)
 $(DICT_TAR):
 	curl -O http://wordnetcode.princeton.edu/$@
 
-clean:
-	rm -rf dict $(DICT_TAR) $(DYNAMIC)
+clean-tar:
+	rm -f $(DICT_TAR)
 
-.PHONY: all clean
+clean-dict:
+	rm -rf dict
+
+clean-dynamic:
+	rm -f $(DYNAMIC)
+
+clean: clean-dynamic clean-dict clean-tar
+
+.PHONY: all clean-tar clean-dict clean-dynamic clean
