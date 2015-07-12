@@ -1,4 +1,5 @@
 DATABASE = wdpg
+RUBY = ruby
 DICT_TAR = wn3.1.dict.tar.gz
 
 PRE = $(wildcard sql/0?.*.sql) $(wildcard sql/1?.*.sql)
@@ -14,7 +15,7 @@ all: $(PRE) $(DYNAMIC) $(POST)
 	done
 
 sql/20.insert-lemmas-%.sql: dict/index.%
-	tail -n +30 $< | bash parsers/parse-index.sh > $@
+	$(RUBY) parsers/parse-index.rb $< > $@
 
 dict/%: dict
 	
