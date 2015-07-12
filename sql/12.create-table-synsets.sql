@@ -1,5 +1,5 @@
 CREATE TABLE synsets (
-  id integer PRIMARY KEY,
+  id text PRIMARY KEY,
   lex_filenum integer NOT NULL,
   pos pos NOT NULL,
   word_count integer NOT NULL,

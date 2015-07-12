@@ -1,6 +1,6 @@
 CREATE TABLE words (
   id SERIAL PRIMARY KEY,
-  synset_id integer NOT NULL REFERENCES synsets,
+  synset_id text NOT NULL REFERENCES synsets,
   word text NOT NULL,
   syntactic_marker syntactic_marker,
   lex_id integer NOT NULL,

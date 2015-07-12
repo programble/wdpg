@@ -20,9 +20,9 @@ ARGF.each_line do |line|
   columns.shift # sense_cnt
   tagsense_count = columns.shift
 
-  synset_ids = columns
-  senses = synset_ids.map.with_index do |synset_id, i|
-    "(#{synset_id}, #{i + 1})"
+  synset_offsets = columns
+  senses = synset_offsets.map.with_index do |synset_offset, i|
+    "('#{pos}#{synset_offset}', #{i + 1})"
   end
 
   puts <<-EOF
