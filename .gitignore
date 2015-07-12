@@ -1,2 +1,3 @@
 *.dict.tar.gz
 dict/
+sql/20.*.sql
