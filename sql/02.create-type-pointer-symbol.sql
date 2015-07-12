@@ -1,6 +1,6 @@
 CREATE TYPE pointer_symbol AS ENUM (
-  '!', '@', '@i', '~', '~i', '#m', '#s', '#p', '%m', '%s', '%p', '=', '+',
-  ';c', '-c', ';r', '-r', ';u', '-u', '*', '>', '^', '$', '&', '<', '\\'
+  '!', '@', '@i', '~', '~i', '#m', '#s', '#p', '%m', '%s', '%p', '=', '+', ';',
+  '-', ';c', '-c', ';r', '-r', ';u', '-u', '*', '>', '^', '$', '&', '<', '\'
 );
 
 CREATE TABLE pointer_symbol_labels (
@@ -22,6 +22,8 @@ INSERT INTO pointer_symbol_labels (pointer_symbol, label) VALUES
   ('%p', 'part meronym'),
   ('=', 'attribute'),
   ('+', 'derivationally related form'),
+  (';', 'domain of synset'),
+  ('-', 'member of this domain'),
   (';c', 'domain of synset - topic'),
   ('-c', 'member of this domain - topic'),
   (';r', 'domain of synset - region'),
@@ -34,4 +36,4 @@ INSERT INTO pointer_symbol_labels (pointer_symbol, label) VALUES
   ('$', 'verb group'),
   ('&', 'similar to'),
   ('<', 'participle of verb'),
-  ('\\', 'pertainym');
+  ('\', 'pertainym');
