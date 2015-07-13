@@ -5,5 +5,5 @@ CREATE TABLE words (
   syntactic_marker syntactic_marker,
   lex_id integer NOT NULL,
   word_number integer NOT NULL,
-  UNIQUE (word, syntactic_marker, lex_id)
+  UNIQUE (synset_id, word_number)
 );

@@ -4,6 +4,5 @@ CREATE TABLE synsets (
   pos pos NOT NULL,
   word_count integer NOT NULL,
   pointer_count integer NOT NULL,
-  frame_count integer,
   glossary text NOT NULL
 );
