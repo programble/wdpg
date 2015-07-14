@@ -28,6 +28,9 @@ WDPG creates the following types:
 
 WDPG creates the following tables:
 
+- `pos_labels`
+- `pointer_symbol_labels`
+- `syntactic_marker_labels`
 - `lemmas`
 - `lemma_synsets`
 - `synsets`
