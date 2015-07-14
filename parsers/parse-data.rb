@@ -9,6 +9,7 @@ ARGF.each_line do |line|
   synset_offset = columns.shift
   lex_filenum = columns.shift.to_i
   pos = columns.shift
+  pos = 'a' if pos == 's'
   word_count = columns.shift.to_i 16
 
   words = []

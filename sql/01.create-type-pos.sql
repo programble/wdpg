@@ -1,4 +1,4 @@
-CREATE TYPE pos AS ENUM ('n', 'v', 'a', 's', 'r');
+CREATE TYPE pos AS ENUM ('n', 'v', 'a', 'r');
 
 CREATE TABLE pos_labels (
   pos pos PRIMARY KEY,
@@ -9,5 +9,4 @@ INSERT INTO pos_labels (pos, label) VALUES
   ('n', 'noun'),
   ('v', 'verb'),
   ('a', 'adjective'),
-  ('s', 'adjective satellite'),
   ('r', 'adverb');
