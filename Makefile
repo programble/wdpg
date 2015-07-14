@@ -17,10 +17,24 @@ DYNAMIC += sql/21.insert-synsets-adj.sql
 DYNAMIC += sql/21.insert-synsets-adv.sql
 POST = $(wildcard sql/3?.*.sql)
 
-all: $(PRE) $(DYNAMIC) $(POST)
+apply: apply-pre apply-dynamic apply-post
+
+apply-pre: $(PRE)
 	set -e; for source in $^; do \
 	  $(PSQL) $(PSQL_FLAGS) -f $$source $(DATABASE); \
 	done
+
+apply-dynamic: $(DYNAMIC)
+	set -e; for source in $^; do \
+	  $(PSQL) $(PSQL_FLAGS) -f $$source $(DATABASE); \
+	done
+
+apply-post: $(POST)
+	set -e; for source in $^; do \
+	  $(PSQL) $(PSQL_FLAGS) -f $$source $(DATABASE); \
+	done
+
+parse: $(DYNAMIC)
 
 sql/20.insert-lemmas-%.sql: dict/index.%
 	$(RUBY) parsers/parse-index.rb $< > $@
@@ -37,15 +51,12 @@ dict: $(DICT_TAR)
 $(DICT_TAR):
 	curl -O http://wordnetcode.princeton.edu/$@
 
-clean-tar:
-	rm -f $(DICT_TAR)
+clean: clean-dynamic clean-dict
 
 clean-dict:
-	rm -rf dict
+	rm -rf $(DICT_TAR) dict
 
 clean-dynamic:
 	rm -f $(DYNAMIC)
 
-clean: clean-dynamic clean-dict clean-tar
-
-.PHONY: all clean-tar clean-dict clean-dynamic clean
+.PHONY: apply apply-pre apply-dynamic apply-post parse clean clean-dict clean-dynamic
